@@ -48,3 +48,9 @@ variable "enable_helm_provider" {
   description = "Installs the helm provider"
   default     = false 
 }
+
+variable "cloudwatch_IAMRole" {
+  type        = string
+  description = "Set the IAM Role to use for the CloudWatch Datasource"
+  default     = "arn:aws:iam::aws:policy/CloudWatchReadOnlyAccess" 
+}

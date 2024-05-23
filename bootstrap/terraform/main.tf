@@ -45,6 +45,7 @@ data "aws_availability_zones" "available" {}
 locals {
   name   = var.name
   region = var.region
+  cwIAMRole = var.cloudwatch_IAMRole
 
   cluster_version = var.cluster_version
   cluster_name    = local.name
@@ -115,6 +116,9 @@ module "eks" {
       max_size       = 5
       desired_size   = 3
       subnet_ids     = module.vpc.private_subnets
+      iam_role_additional_policies = {
+        cwIAMRole=local.cwIAMRole
+      }
     }
   }
 

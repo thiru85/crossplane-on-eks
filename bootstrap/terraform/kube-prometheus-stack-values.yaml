@@ -33,6 +33,12 @@ grafana:
         url: http://kube-prometheus-stack-prometheus.kube-prometheus-stack:9090/
         isDefault: false
         uid: prometheusdatasource
+      - name: CloudWatch
+        type: cloudwatch
+        jsonData:
+          authType: default
+          defaultRegion: us-east-1
+        isDefault: false
       deleteDatasources:
       - name: Prometheus
   dashboardProviders:
@@ -52,3 +58,7 @@ grafana:
         gnetId: 19747
         revision: 5
         datasource: prometheusdatasource
+      cloudwatch:
+        gnetId: 12979
+        revision: 4
+        datasource: CloudWatch
